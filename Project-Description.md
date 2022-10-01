@@ -12,6 +12,8 @@ Prerequisites:
 * I created a free tier instance adding security rules for ssh (port 22) and http (port 80)
 * I downloaded the ssh key 
 
+![Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/EC2-Instance.PNG)
+
 ## 2. Install Apache server ##
 
 * I launched terminal and ran the command below to give the necessary permissions to the pem file
