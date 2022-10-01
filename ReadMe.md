@@ -1,0 +1,1 @@
+# LAMP Stack Implementation in AWS #
