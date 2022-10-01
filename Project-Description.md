@@ -29,7 +29,7 @@ Prerequisites:
 `sudo apt update -y`
 `sudo apt install apache2 -y`
 
-[Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/apache-running.PNG)
+![Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/apache-running.PNG)
 
 * I confirmed that I could reach the apache website on localhost 
 
@@ -115,7 +115,7 @@ To test the setup with a PHP script, it’s best to set up a proper Apache Virtu
 
 `sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/mylampproject/index.html`
 
-[Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/access-new-site.PNG)
+![Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/access-new-site.PNG)
 
 ## 6. Enable PHP on the Website ##
 
@@ -144,7 +144,7 @@ With the default DirectoryIndex settings on Apache, a file named index.html will
 <?php
 phpinfo();
 ```
-[Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/php-page.PNG)
+![Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/php-page.PNG)
 
 * After checking the relevant information about your PHP server through that page, it’s best to remove the file you created as it contains sensitive information about your PHP environment -and your Ubuntu server. You can use rm to do so:
 
