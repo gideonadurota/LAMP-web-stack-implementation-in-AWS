@@ -29,16 +29,15 @@ Prerequisites:
 `sudo apt update -y`
 `sudo apt install apache2 -y`
 
-* I enabled firewall on on the server and allowed apache traffic using uncomplicated firewall
-
-`sudo ufw enable`
-`sudo ufw allow "Apache"`
+[Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/apache-running.PNG)
 
 * I confirmed that I could reach the apache website on localhost 
 
 `curl http://localhost:80`
 
 * I got the public ip address of the server using the command `curl -s http://169.254.169.254/latest/meta-data/public-ipv4` and navigated to the address on my browser.
+
+![Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/apache-website-from-browwer.PNG)
 
 ## 3. Install MySql DB ##
 
@@ -67,7 +66,7 @@ We have Apache installed to serve the content and MySQL installed to store and m
 
 * Confirm PHP version using `php -v`
 
-## Create Apache Virtual Host ##
+## 5. Create Apache Virtual Host ##
 
 To test the setup with a PHP script, it’s best to set up a proper Apache Virtual Host to hold the website’s files and folders. Virtual host allows you to have multiple websites located on a single machine and users of the websites will not even notice it
 
@@ -116,6 +115,8 @@ To test the setup with a PHP script, it’s best to set up a proper Apache Virtu
 
 `sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/mylampproject/index.html`
 
+[Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/access-new-site.PNG)
+
 ## 6. Enable PHP on the Website ##
 
 With the default DirectoryIndex settings on Apache, a file named index.html will always take precedence over an index.php file. This is useful for setting up maintenance pages in PHP applications, by creating a temporary index.html file containing an informative message to visitors. Because this page will take precedence over the index.php page, it will then become the landing page for the application. Once maintenance is over, the index.html is renamed or removed from the document root, bringing back the regular application page
@@ -143,6 +144,7 @@ With the default DirectoryIndex settings on Apache, a file named index.html will
 <?php
 phpinfo();
 ```
+[Screenshot](https://github.com/gideonadurota/LAMP-web-stack-implementation-in-AWS/blob/main/Screenshots/php-page.PNG)
 
 * After checking the relevant information about your PHP server through that page, it’s best to remove the file you created as it contains sensitive information about your PHP environment -and your Ubuntu server. You can use rm to do so:
 
