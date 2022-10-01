@@ -16,16 +16,16 @@ Prerequisites:
 
 * I launched terminal and ran the command below to give the necessary permissions to the pem file
 
-'sudo chmod 0400 lampwebstack.pem'
+`sudo chmod 0400 lampwebstack.pem`
 
 * ssh into the ec2 instance 
 
-'ssh -i lampwebstack.pem user@ip-address'
+`ssh -i lampwebstack.pem user@ip-address`
 
 * In order to install apache server, first I updated the packages on the ubuntu server
 
-'sudo apt update -y'
-'sudo apt install apache2 -y'
+`sudo apt update -y`
+`sudo apt install apache2 -y`
 
 
 
