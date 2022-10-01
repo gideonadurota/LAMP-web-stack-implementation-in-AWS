@@ -63,4 +63,61 @@ We have Apache installed to serve the content and MySQL installed to store and m
 
 `sudo apt install -y php php-mysql libapache2-mod-php`
 
+* Confirm PHP version using `php -v`
+
+## Create Apache Virtual Host ##
+
+To test the setup with a PHP script, it’s best to set up a proper Apache Virtual Host to hold the website’s files and folders. Virtual host allows you to have multiple websites located on a single machine and users of the websites will not even notice it
+
+* Create the directory for projectlamp using ‘mkdir’ command as follows:
+
+`sudo mkdir /var/www/mylampproject`
+
+* Next, assign ownership of the directory with the *$USER* environment variable, which will reference your current system user:
+
+`sudo chown -R $USER:$USER /var/www/mylampproject`
+
+* Create and open a new configuration file in Apache’s *sites-available* directory using vim
+
+`sudo vi /etc/apache2/sites-available/mylampproject.conf`
+
+* Paste the following configurations inside the config file and save
+
+```
+<VirtualHost *:80>
+    ServerName mylampproject
+    ServerAlias www.mylampproject 
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/mylampproject
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+* With this VirtualHost configuration, we’re telling Apache to serve projectlamp using /var/www/mylampproject as its web root directory. If you would like to test Apache without a domain name, you can remove or comment out the options ServerName and ServerAlias by adding a # character in the beginning of each option’s lines. Adding the # character there will tell the program to skip processing the instructions on those lines.
+
+* Enable the new virtual host
+
+`sudo a2ensite mylampproject`
+
+* If you are not using custom doamin, use `a2dissite` command to disable the default website. If not the default will overwrite your own website
+
+`sudo a2dissite 000-default`
+
+* Confirm your syntax for any errors using `sudo apache2ctl configtest`
+
+* Reload apache so the current changes take effect 
+
+`sudo systemctl reload apache2`
+
+* The new website is now active, but the web root /var/www/projectlamp is still empty. Create an index.html file in that location so that we can test that the virtual host works as expected:
+
+`sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/mylampproject/index.html`
+
+## 6. Enable PHP on the Website ##
+
+With the default DirectoryIndex settings on Apache, a file named index.html will always take precedence over an index.php file. This is useful for setting up maintenance pages in PHP applications, by creating a temporary index.html file containing an informative message to visitors. Because this page will take precedence over the index.php page, it will then become the landing page for the application. Once maintenance is over, the index.html is renamed or removed from the document root, bringing back the regular application page
+
+
+
 
